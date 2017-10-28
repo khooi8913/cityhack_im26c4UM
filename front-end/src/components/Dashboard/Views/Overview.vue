@@ -88,7 +88,7 @@
       id: 1,
       name: 'Road accident',
       location: 'Jalan PJS 11/20',
-      time: '10:30 AM, 29/10/17',
+      time: '9:32 AM, 29/10/17',
       gps: '3.068331, 101.602162'
     },
     {
