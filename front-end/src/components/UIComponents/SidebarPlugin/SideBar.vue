@@ -11,7 +11,7 @@
             <div class="logo-img">
                 <img src="static/img/sunway_logo.png" alt="">
             </div>
-          Sunway City
+          Sunway City Hack
         </a>
       </div>
       <slot>
