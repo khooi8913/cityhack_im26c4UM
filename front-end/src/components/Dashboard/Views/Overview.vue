@@ -238,7 +238,7 @@
       }
     },
     created () {
-      const ws = new WebSocket('ws://localhost:9080')
+      const ws = new WebSocket('ws://192.168.0.174:9080')
       const dialog = this.$dialog
       const _this = this
 
