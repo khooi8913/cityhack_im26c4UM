@@ -1,6 +1,8 @@
 <template>
   <div>
-
+    <modal name="xxx">
+      hello, world!
+    </modal>
     <!--Stats cards-->
     <div class="row">
       <div class="col-lg-3 col-sm-6" v-for="stats in statsCards">
@@ -63,13 +65,12 @@
         </chart-card>
       </div> -->
 
-    </div>
-
   </div>
 </template>
 <script>
   import StatsCard from 'components/UIComponents/Cards/StatsCard.vue'
   import ChartCard from 'components/UIComponents/Cards/ChartCard.vue'
+
   export default {
     components: {
       StatsCard,
@@ -162,6 +163,34 @@
           options: {}
         }
 
+      }
+    },
+    created () {
+      const modal = this.$modal
+      const ws = new WebSocket('ws://localhost:9080')
+
+      ws.onopen = function () {
+        console.log('Opening')
+      }
+
+      ws.onmessage = function (evt) {
+        const receivedMsg = evt.data
+        modal.show('xxx')
+        console.log(receivedMsg)
+        alert(receivedMsg)
+      }
+
+      ws.onclose = function () {
+        console.log('Closing')
+      }
+
+      ws.onerror = function () {
+        console.log('Error occured')
+        ws.close()
+      }
+
+      window.onbeforeunload = function (event) {
+        ws.close()
       }
     }
   }
