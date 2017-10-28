@@ -4,7 +4,7 @@
       <nav class="pull-left">
         <ul>
           <li>
-            <router-link :to="{path:'/admin'}">IM26C4UM</router-link>
+            <router-link :to="{path:'/admin'}">Sunway City Hack</router-link>
           </li>
         </ul>
       </nav>

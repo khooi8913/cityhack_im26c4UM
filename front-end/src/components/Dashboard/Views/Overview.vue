@@ -19,6 +19,19 @@
     </div>
 
     <div class="row">
+
+        <div class="col-lg-6">
+          <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
+            <h4 class="title" slot="title">Vehicles on road (micro-trend)</h4>
+            <span slot="subTitle"> 24 Hours performance</span>
+            <span slot="footer">
+              <i class="ti-reload"></i> Updated 3 minutes ago</span>
+            <div slot="legend">
+              <i class="fa fa-circle text-info"></i> Vehicle
+            </div>
+          </chart-card>
+        </div>
+
       <div class="col-lg-6">
         <div class="card">
           <paper-table :title="table.title" :sub-title="table.subTitle" :data="table.data" :columns="table.columns">
@@ -27,22 +40,10 @@
       </div>
 
       <!--Charts-->
-      <!-- <div class="row">
+      <!-- <div class="row"> -->
 
-        <div class="col-xs-12">
-          <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
-            <h4 class="title" slot="title">Users behavior</h4>
-            <span slot="subTitle"> 24 Hours performance</span>
-            <span slot="footer">
-              <i class="ti-reload"></i> Updated 3 minutes ago</span>
-            <div slot="legend">
-              <i class="fa fa-circle text-info"></i> Open
-              <i class="fa fa-circle text-danger"></i> Click
-              <i class="fa fa-circle text-warning"></i> Click Second Time
-            </div>
-          </chart-card>
-        </div>
 
+<!-- 
         <div class="col-md-6 col-xs-12">
           <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
             <h4 class="title" slot="title">Email Statistics</h4>
@@ -85,7 +86,7 @@
       id: 1,
       name: 'Road accident',
       location: 'Jalan PJS 11/20',
-      time: '10:30 AM, 29/10/17',
+      time: '9:32 AM, 29/10/17',
       gps: '3.068331, 101.602162'
     },
     {
@@ -94,6 +95,13 @@
       location: 'Jalan Universiti',
       time: '9:57 AM, 29/10/17',
       gps: '3.067661, 101.603634'
+    },
+    {
+      id: 3,
+      name: 'Street Demonstrations',
+      location: 'Persiaran Lagoon',
+      time: '10:13 AM, 29/10/17',
+      gps: '3.072813, 101.608980'
     }]
   export default {
     components: {
@@ -112,7 +120,7 @@
             type: 'warning',
             icon: 'ti-car',
             title: 'Vehicles on road',
-            value: '1675',
+            value: '698',
             footerText: 'Updated 5 mins ago',
             footerIcon: 'ti-reload'
           },
@@ -128,7 +136,7 @@
             type: 'danger',
             icon: 'ti-pulse',
             title: 'Emergency Cases',
-            value: '2',
+            value: '3',
             footerText: 'In the last hour',
             footerIcon: 'ti-timer'
           },
@@ -143,16 +151,14 @@
         ],
         usersChart: {
           data: {
-            labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+            labels: ['5:00AM', '6:00AM', '7:00AM', '8:00AM', '9:00AM', '10:00AM', '11:00AM'],
             series: [
-              [287, 385, 490, 562, 594, 626, 698, 895, 952],
-              [67, 152, 193, 240, 387, 435, 535, 642, 744],
-              [23, 113, 67, 108, 190, 239, 307, 410, 410]
+              [202, 585, 890, 1262, 1094, 726, 698]
             ]
           },
           options: {
             low: 0,
-            high: 1000,
+            high: 1500,
             showArea: true,
             height: '245px',
             axisX: {
