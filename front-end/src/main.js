@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './assets/sass/paper-dashboard.scss'
 import 'es6-promise/auto'
 import VuejsDialog from 'vuejs-dialog'
+import { VTooltip } from 'v-tooltip'
 
 // plugin setup
 Vue.use(VueRouter)
@@ -25,6 +26,7 @@ Vue.use(vClickOutside)
 Vue.use(Notifications)
 Vue.use(SideBar)
 Vue.use(VuejsDialog)
+Vue.directive('tooltip', VTooltip)
 
 // configure router
 const router = new VueRouter({
