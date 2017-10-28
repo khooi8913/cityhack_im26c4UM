@@ -1,8 +1,5 @@
 <template>
   <div>
-    <modal name="xxx">
-      hello, world!
-    </modal>
     <!--Stats cards-->
     <div class="row">
       <div class="col-lg-3 col-sm-6" v-for="stats in statsCards">
@@ -80,6 +77,7 @@
   import StatsCard from 'components/UIComponents/Cards/StatsCard.vue'
   import ChartCard from 'components/UIComponents/Cards/ChartCard.vue'
   import PaperTable from 'components/UIComponents/PaperTable.vue'
+  import PaperNotification from 'src/components/UIComponents/NotificationPlugin/Notification.vue'
 
   const tableColumns = ['Id', 'Name', 'Location', 'Time', 'GPS']
   const tableData = [
@@ -101,7 +99,8 @@
     components: {
       StatsCard,
       ChartCard,
-      PaperTable
+      PaperTable,
+      PaperNotification
     },
     /**
      * Chart data used to render stats, charts. Should be replaced with server data
@@ -197,19 +196,67 @@
         }
       }
     },
+    methods: {
+      notifyVue (verticalAlign, horizontalAlign, receivedMessage) {
+        this.$notifications.notify(
+          {
+            message: receivedMessage.message,
+            icon: receivedMessage.icon,
+            horizontalAlign: horizontalAlign,
+            verticalAlign: verticalAlign,
+            type: receivedMessage.type
+          }
+        )
+      }
+    },
     created () {
-      const modal = this.$modal
       const ws = new WebSocket('ws://localhost:9080')
+      const dialog = this.$dialog
+      const _this = this
 
       ws.onopen = function () {
         console.log('Opening')
       }
 
       ws.onmessage = function (evt) {
-        const receivedMsg = evt.data
-        modal.show('xxx')
+        const receivedMsg = JSON.parse(evt.data)
+        // {dialog_message: ''}
+
+        const message = '<div>fsdfsdfsdf</div>'
+
+        const options = {
+          html: true, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
+          loader: true, // set to true if you want the dialog to show a loader after click on "proceed"
+          reverse: false, // switch the button positions (left to right, and vise versa)
+          okText: receivedMsg.okText,
+          cancelText: 'Not now',
+          animation: 'zoom', // Available: "zoom", "bounce", "fade"
+          type: 'basic', // coming soon: 'soft', 'hard'
+          verification: 'continue', // for hard confirm, user will be prompted to type this to enable the proceed button
+          clicksCount: 3 // for soft confirm, user will be asked to click on "proceed" btn 3 times before actually proceeding
+        }
+
+        dialog.confirm(message, options)
+          .then(
+            (d) => {
+              setTimeout(
+                () => {
+                  console.log('Yes')
+                  _this.notifyVue('top', 'right', receivedMsg)
+                  d.close()
+                }
+                , 2000)
+            }
+          )
+          .catch(() => {
+            _this.notifyVue('top', 'right', {
+              message: 'Please solve it as soon as possible',
+              icon: 'ti-timer',
+              type: 'warning'
+            })
+          })
+
         console.log(receivedMsg)
-        alert(receivedMsg)
       }
 
       ws.onclose = function () {
