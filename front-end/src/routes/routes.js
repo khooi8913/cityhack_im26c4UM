@@ -8,7 +8,8 @@ import Overview from 'src/components/Dashboard/Views/Overview.vue'
 // import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 // import Icons from 'src/components/Dashboard/Views/Icons.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
-// import Typography from 'src/components/Dashboard/Views/Typography.vue'
+import Video from 'src/components/Dashboard/Views/Video.vue'
+import Typography from 'src/components/Dashboard/Views/Typography.vue'
 // import TableList from 'src/components/Dashboard/Views/TableList.vue'
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
         path: 'maps',
         name: 'maps',
         component: Maps
+      },
+      {
+        path: 'video',
+        name: 'Traffic',
+        component: Video
       }
     ]
   },

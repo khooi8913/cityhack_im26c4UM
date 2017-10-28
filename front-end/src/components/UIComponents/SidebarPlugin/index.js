@@ -12,6 +12,11 @@ const SidebarStore = {
       name: 'Maps',
       icon: 'ti-map',
       path: '/admin/maps'
+    },
+    {
+      name: 'Real-time traffic video',
+      icon: 'ti-car',
+      path: '/admin/video'
     }
   ],
   displaySidebar (value) {
