@@ -11,7 +11,7 @@
       <div class="copyright pull-right">
         &copy; Created with
         <i class="fa fa-heart heart"></i> by team
-        <a href="https://github.com/cristijora" target="_blank">IM26C4UM</a>.
+        <a href="https://github.com/khooi8913/cityhack_im26c4UM" target="_blank">IM26C4UM</a>.
       </div>
     </div>
   </footer>
