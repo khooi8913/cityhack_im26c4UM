@@ -21,60 +21,87 @@
       </div>
     </div>
 
-    <!--Charts-->
-    <!-- <div class="row">
-
-      <div class="col-xs-12">
-        <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
-          <h4 class="title" slot="title">Users behavior</h4>
-          <span slot="subTitle"> 24 Hours performance</span>
-          <span slot="footer">
-            <i class="ti-reload"></i> Updated 3 minutes ago</span>
-          <div slot="legend">
-            <i class="fa fa-circle text-info"></i> Open
-            <i class="fa fa-circle text-danger"></i> Click
-            <i class="fa fa-circle text-warning"></i> Click Second Time
-          </div>
-        </chart-card>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <paper-table :title="table.title" :sub-title="table.subTitle" :data="table.data" :columns="table.columns">
+          </paper-table>
+        </div>
       </div>
 
-      <div class="col-md-6 col-xs-12">
-        <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
-          <h4 class="title" slot="title">Email Statistics</h4>
-          <span slot="subTitle"> Last campaign performance</span>
-          <span slot="footer">
-            <i class="ti-timer"></i> Campaign set 2 days ago</span>
-          <div slot="legend">
-            <i class="fa fa-circle text-info"></i> Open
-            <i class="fa fa-circle text-danger"></i> Bounce
-            <i class="fa fa-circle text-warning"></i> Unsubscribe
-          </div>
-        </chart-card>
-      </div>
+      <!--Charts-->
+      <!-- <div class="row">
 
-      <div class="col-md-6 col-xs-12">
-        <chart-card :chart-data="activityChart.data" :chart-options="activityChart.options">
-          <h4 class="title" slot="title">2015 Sales</h4>
-          <span slot="subTitle"> All products including Taxes</span>
-          <span slot="footer">
-            <i class="ti-check"></i> Data information certified</span>
-          <div slot="legend">
-            <i class="fa fa-circle text-info"></i> Tesla Model S
-            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-          </div>
-        </chart-card>
-      </div> -->
+        <div class="col-xs-12">
+          <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
+            <h4 class="title" slot="title">Users behavior</h4>
+            <span slot="subTitle"> 24 Hours performance</span>
+            <span slot="footer">
+              <i class="ti-reload"></i> Updated 3 minutes ago</span>
+            <div slot="legend">
+              <i class="fa fa-circle text-info"></i> Open
+              <i class="fa fa-circle text-danger"></i> Click
+              <i class="fa fa-circle text-warning"></i> Click Second Time
+            </div>
+          </chart-card>
+        </div>
 
+        <div class="col-md-6 col-xs-12">
+          <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
+            <h4 class="title" slot="title">Email Statistics</h4>
+            <span slot="subTitle"> Last campaign performance</span>
+            <span slot="footer">
+              <i class="ti-timer"></i> Campaign set 2 days ago</span>
+            <div slot="legend">
+              <i class="fa fa-circle text-info"></i> Open
+              <i class="fa fa-circle text-danger"></i> Bounce
+              <i class="fa fa-circle text-warning"></i> Unsubscribe
+            </div>
+          </chart-card>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+          <chart-card :chart-data="activityChart.data" :chart-options="activityChart.options">
+            <h4 class="title" slot="title">2015 Sales</h4>
+            <span slot="subTitle"> All products including Taxes</span>
+            <span slot="footer">
+              <i class="ti-check"></i> Data information certified</span>
+            <div slot="legend">
+              <i class="fa fa-circle text-info"></i> Tesla Model S
+              <i class="fa fa-circle text-warning"></i> BMW 5 Series
+            </div>
+          </chart-card>
+        </div> -->
+
+    </div>
   </div>
 </template>
 <script>
   import StatsCard from 'components/UIComponents/Cards/StatsCard.vue'
   import ChartCard from 'components/UIComponents/Cards/ChartCard.vue'
+  import PaperTable from 'components/UIComponents/PaperTable.vue'
 
+  const tableColumns = ['Id', 'Name', 'Location', 'Time', 'GPS']
+  const tableData = [
+    {
+      id: 1,
+      name: 'Road accident',
+      location: 'Jalan PJS 11/20',
+      time: '10:30 AM, 29/10/17',
+      gps: '3.068331, 101.602162'
+    },
+    {
+      id: 2,
+      name: 'Robbery',
+      location: 'Jalan Universiti',
+      time: '9:57 AM, 29/10/17',
+      gps: '3.067661, 101.603634'
+    }]
   export default {
     components: {
       StatsCard,
-      ChartCard
+      ChartCard,
+      PaperTable
     },
     /**
      * Chart data used to render stats, charts. Should be replaced with server data
@@ -87,7 +114,7 @@
             icon: 'ti-car',
             title: 'Vehicles on road',
             value: '1675',
-            footerText: 'Updated now',
+            footerText: 'Updated 5 mins ago',
             footerIcon: 'ti-reload'
           },
           {
@@ -102,7 +129,7 @@
             type: 'danger',
             icon: 'ti-pulse',
             title: 'Emergency Cases',
-            value: '4',
+            value: '2',
             footerText: 'In the last hour',
             footerIcon: 'ti-timer'
           },
@@ -161,8 +188,13 @@
             series: [62, 32, 6]
           },
           options: {}
+        },
+        table: {
+          title: 'Emergency Cases',
+          // subTitle: 'Here is a subtitle for this table',
+          columns: [...tableColumns],
+          data: [...tableData]
         }
-
       }
     },
     created () {
