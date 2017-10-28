@@ -261,7 +261,7 @@
           clicksCount: 3 // for soft confirm, user will be asked to click on "proceed" btn 3 times before actually proceeding
         }
 
-        dialog.confirm('<img src="../../static/img/test_gif.gif" class="map-container">', options)
+        dialog.confirm('<img src="../../static/img/map.jpeg" class="map-container">', options)
           .then(
             (d) => {
               setTimeout(
