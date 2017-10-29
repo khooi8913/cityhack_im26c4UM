@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import json
@@ -11,7 +12,7 @@ SERVERS[0] = ws.WebSocketServer(0)
 def init_ws(request):
     return Response({'port': 9080},status=200)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def notify_message(request):
     """
     {
@@ -20,7 +21,8 @@ def notify_message(request):
     :param request:
     :return:
     """
-    code = request.data['code']
+    # code = request.data['code']
+    code = 0
     if code == 0:
         SERVERS[0].send(json.dumps({'okText':'Notify police and ambulance',
                                     'problem': 'Hit and run',
@@ -33,5 +35,5 @@ def notify_message(request):
                                     'message': 'Ambulance is dispatched',
                                     'icon': 'ti-check',
                                     'type': 'success'}))
-    return Response('Message sent', status=200)
+    return HttpResponse('Message sent')
 
