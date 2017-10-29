@@ -238,7 +238,7 @@
       }
     },
     created () {
-      const ws = new WebSocket('ws://192.168.0.174:9080')
+      const ws = new WebSocket('ws://192.168.43.237:9080')
       const dialog = this.$dialog
       const _this = this
 
@@ -261,7 +261,7 @@
           clicksCount: 3 // for soft confirm, user will be asked to click on "proceed" btn 3 times before actually proceeding
         }
 
-        dialog.confirm('<img src="../../static/img/map.jpeg" class="map-container">', options)
+        dialog.confirm('<div>Road Accident happens at Canopy Walk</div><img src="../../static/img/map.jpeg" class="map-container">', options)
           .then(
             (d) => {
               setTimeout(

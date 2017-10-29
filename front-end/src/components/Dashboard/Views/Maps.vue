@@ -9,7 +9,7 @@
         <div id='map'></div>
       </div>
       <div>
-        <h4>Top busiest roads now: <span class="text-danger" v-tooltip.bottom="'Traffic is congested because police are handling a robbery case.'">Jalan University</span>, <span class="text-warning" v-tooltip.bottom="'No vehicles are passable due to the ongoing streets demonstration'">Persiaran Lagoon</span></h4>
+        <h4>Most congested road: <span class="text-danger" v-tooltip.bottom="'Traffic is congested because police are handling a robbery case.'">Jalan University</span>, <span class="text-warning" v-tooltip.bottom="'No vehicles are passable due to the ongoing streets demonstration'">Persiaran Lagoon</span></h4>
         </div>
     </div>
     </div>
