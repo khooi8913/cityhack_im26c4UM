@@ -1,8 +1,12 @@
-# cityhack_im26c4UM
-CityHack im26c4UM
+# Team and Project
+CityHack im26c4UM - Real Time Traffic Intelligence
 
 # Slide
 Slide url: http://slides.com/baoxuan/deck#/
+
+# Frontend
+Node version: 8.8.1
+VueJS version: 2.5.2
 
 # Backend
 Python server framework: Django (server), ws4py (websocket)
