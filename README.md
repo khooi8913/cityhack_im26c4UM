@@ -8,7 +8,7 @@ Slide url: http://slides.com/baoxuan/deck#/
 Python server framework: Django (server), ws4py (websocket)
 Python version: 2.7.12
 
-# Reference:
+# Reference
 Darknet: https://pjreddie.com/darknet/yolo/
 Python object detection library - Darkflow: https://github.com/thtrieu/darkflow
 Video sample: https://www.youtube.com/watch?v=yLlgxc-quiU
