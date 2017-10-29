@@ -114,6 +114,7 @@
      */
     data () {
       return {
+        ws: new WebSocket('ws://192.168.43.237:9080'),
         statsCards: [
           {
             type: 'warning',
@@ -238,7 +239,7 @@
       }
     },
     created () {
-      const ws = new WebSocket('ws://192.168.43.237:9080')
+      const ws = this.ws
       const dialog = this.$dialog
       const _this = this
 
@@ -309,6 +310,9 @@
       setInterval(() => {
         _this.statsCards[0].value = 698 + parseInt(Math.random() * 40 - 20)
       }, 2000)
+    },
+    destroyed () {
+      this.ws.close()
     }
   }
 
